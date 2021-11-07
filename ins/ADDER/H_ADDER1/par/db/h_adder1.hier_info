@@ -1,0 +1,9 @@
+|h_adder1
+ain => sout.IN0
+ain => cout.IN0
+bin => sout.IN1
+bin => cout.IN1
+sout << sout.DB_MAX_OUTPUT_PORT_TYPE
+cout << cout.DB_MAX_OUTPUT_PORT_TYPE
+
+

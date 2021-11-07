@@ -1,0 +1,16 @@
+|h_adder1_udp
+ain => ain.IN1
+bin => bin.IN1
+cin => ~NO_FANOUT~
+sout << xor_udp:U1.port0
+cout << U2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|h_adder1_udp|xor_udp:U1
+DOUT <= comb.DB_MAX_OUTPUT_PORT_TYPE
+X1 => comb.IN0
+X1 => comb.IN0
+X2 => comb.IN1
+X2 => comb.IN1
+
+

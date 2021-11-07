@@ -1,0 +1,172 @@
+$comment
+	File created using the following command:
+		vcd file seg_8_hex_led.msim.vcd -direction
+$end
+$date
+	Sat Nov 06 19:14:33 2021
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module seg_8_hex_led_vlg_vec_tst $end
+$var reg 4 ! cnt4 [3:0] $end
+$var wire 1 " seg [7] $end
+$var wire 1 # seg [6] $end
+$var wire 1 $ seg [5] $end
+$var wire 1 % seg [4] $end
+$var wire 1 & seg [3] $end
+$var wire 1 ' seg [2] $end
+$var wire 1 ( seg [1] $end
+$var wire 1 ) seg [0] $end
+$var wire 1 * sampler $end
+$scope module i1 $end
+$var wire 1 + gnd $end
+$var wire 1 , vcc $end
+$var wire 1 - unknown $end
+$var tri1 1 . devclrn $end
+$var tri1 1 / devpor $end
+$var tri1 1 0 devoe $end
+$var wire 1 1 seg[0]~output_o $end
+$var wire 1 2 seg[1]~output_o $end
+$var wire 1 3 seg[2]~output_o $end
+$var wire 1 4 seg[3]~output_o $end
+$var wire 1 5 seg[4]~output_o $end
+$var wire 1 6 seg[5]~output_o $end
+$var wire 1 7 seg[6]~output_o $end
+$var wire 1 8 seg[7]~output_o $end
+$var wire 1 9 cnt4[2]~input_o $end
+$var wire 1 : cnt4[0]~input_o $end
+$var wire 1 ; cnt4[3]~input_o $end
+$var wire 1 < cnt4[1]~input_o $end
+$var wire 1 = WideOr6~0_combout $end
+$var wire 1 > WideOr5~0_combout $end
+$var wire 1 ? WideOr4~0_combout $end
+$var wire 1 @ WideOr3~0_combout $end
+$var wire 1 A WideOr2~0_combout $end
+$var wire 1 B WideOr1~0_combout $end
+$var wire 1 C WideOr0~0_combout $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 !
+0)
+0(
+0'
+0&
+0%
+0$
+1#
+1"
+x*
+0+
+1,
+x-
+1.
+1/
+10
+01
+02
+03
+04
+05
+06
+17
+18
+09
+0:
+0;
+0<
+0=
+0>
+0?
+0@
+0A
+0B
+0C
+$end
+#60000
+b1 !
+1:
+0*
+1B
+1A
+1@
+1=
+16
+15
+14
+11
+1$
+1%
+1&
+1)
+#140000
+b11 !
+b10 !
+0:
+1<
+1*
+1C
+0A
+0@
+1?
+0=
+07
+05
+04
+13
+01
+0#
+0%
+0&
+1'
+0)
+#220000
+b11 !
+1:
+0*
+1A
+0?
+15
+03
+1%
+0'
+#280000
+b111 !
+b101 !
+b100 !
+0:
+0<
+19
+1*
+0B
+1@
+1=
+06
+14
+11
+0$
+1&
+1)
+#340000
+b0 !
+09
+0*
+0C
+0A
+0@
+0=
+17
+05
+04
+01
+1#
+0%
+0&
+0)
+#1000000

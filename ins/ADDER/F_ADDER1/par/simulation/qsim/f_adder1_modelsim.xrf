@@ -1,0 +1,13 @@
+vendor_name = ModelSim
+source_file = 1, C:/altera/13.1/ins/ADDER/H_ADDER1/rtl/h_adder1.v
+source_file = 1, C:/altera/13.1/ins/ADDER/F_ADDER1/rtl/f_adder1.v
+source_file = 1, C:/altera/13.1/ins/ADDER/F_ADDER1/par/Waveform.vwf
+source_file = 1, C:/altera/13.1/ins/ADDER/F_ADDER1/par/db/f_adder1.cbx.xml
+design_name = f_adder1
+instance = comp, \sout~output , sout~output, f_adder1, 1
+instance = comp, \cout~output , cout~output, f_adder1, 1
+instance = comp, \cin~input , cin~input, f_adder1, 1
+instance = comp, \bin~input , bin~input, f_adder1, 1
+instance = comp, \ain~input , ain~input, f_adder1, 1
+instance = comp, \U2|sout~0 , U2|sout~0, f_adder1, 1
+instance = comp, \U3~0 , U3~0, f_adder1, 1

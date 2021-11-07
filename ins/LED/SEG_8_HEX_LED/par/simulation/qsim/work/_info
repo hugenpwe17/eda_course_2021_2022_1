@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\altera\13.1\ins\LED\SEG_8_HEX_LED\par\simulation\qsim
+vseg_8_hex_led
+Z1 !s100 XAUBf=Y[e40l]=_:;ZA:a0
+Z2 IX?G]hDz_g8ZPaXzfd17E`1
+Z3 Vn53JM[I]lB4I@0S]A0=h81
+Z4 dC:\altera\13.1\ins\LED\SEG_8_HEX_LED\par\simulation\qsim
+Z5 w1636197272
+Z6 8seg_8_hex_led.vo
+Z7 Fseg_8_hex_led.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|seg_8_hex_led.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1636197272.682000
+Z12 !s107 seg_8_hex_led.vo|
+!s101 -O0
+vseg_8_hex_led_vlg_check_tst
+!i10b 1
+!s100 K97VS1iQ3oU]l=cS8EWaj3
+IZO>eBoIX]NhR_GL5S5ake1
+Z13 V@AK2_Z18VCaKLh^o0iC>P0
+R4
+Z14 w1636197270
+Z15 8Waveform1.vwf.vt
+Z16 FWaveform1.vwf.vt
+L0 57
+R8
+r1
+!s85 0
+31
+Z17 !s108 1636197272.749000
+Z18 !s107 Waveform1.vwf.vt|
+Z19 !s90 -work|work|Waveform1.vwf.vt|
+!s101 -O0
+R10
+vseg_8_hex_led_vlg_sample_tst
+!i10b 1
+!s100 K]9a2G1DUaZdi^U_bn0[Q1
+IQ>OW_U?9a0IfFBC_9kLb=2
+Z20 VBSS3_6HPmbiJ=5i<K7hAz1
+R4
+R14
+R15
+R16
+L0 29
+R8
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R10
+vseg_8_hex_led_vlg_vec_tst
+!i10b 1
+!s100 Q1hjU2ingdX5ff5C[Ve3i0
+IJSUV7E;_TdK9BXNXJ]2802
+Z21 V@:FTSKdK6Ih@c4]f9mn0n0
+R4
+R14
+R15
+R16
+Z22 L0 277
+R8
+r1
+!s85 0
+31
+R17
+R18
+R19
+!s101 -O0
+R10

@@ -1,0 +1,165 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Full Version"
+
+// DATE "11/06/2021 17:13:24"
+
+// 
+// Device: Altera EP4CE10F17C8 Package FBGA256
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module f_adder1 (
+	ain,
+	bin,
+	cin,
+	sout,
+	cout);
+input 	ain;
+input 	bin;
+input 	cin;
+output 	sout;
+output 	cout;
+
+// Design Ports Information
+// sout	=>  Location: PIN_F9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// cout	=>  Location: PIN_D11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ain	=>  Location: PIN_M15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// bin	=>  Location: PIN_M16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// cin	=>  Location: PIN_E16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \sout~output_o ;
+wire \cout~output_o ;
+wire \cin~input_o ;
+wire \bin~input_o ;
+wire \ain~input_o ;
+wire \U2|sout~0_combout ;
+wire \U3~0_combout ;
+
+
+// Location: IOOBUF_X23_Y24_N16
+cycloneive_io_obuf \sout~output (
+	.i(\U2|sout~0_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\sout~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \sout~output .bus_hold = "false";
+defparam \sout~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X32_Y24_N23
+cycloneive_io_obuf \cout~output (
+	.i(\U3~0_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\cout~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \cout~output .bus_hold = "false";
+defparam \cout~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X34_Y12_N8
+cycloneive_io_ibuf \cin~input (
+	.i(cin),
+	.ibar(gnd),
+	.o(\cin~input_o ));
+// synopsys translate_off
+defparam \cin~input .bus_hold = "false";
+defparam \cin~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X34_Y12_N22
+cycloneive_io_ibuf \bin~input (
+	.i(bin),
+	.ibar(gnd),
+	.o(\bin~input_o ));
+// synopsys translate_off
+defparam \bin~input .bus_hold = "false";
+defparam \bin~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X34_Y12_N15
+cycloneive_io_ibuf \ain~input (
+	.i(ain),
+	.ibar(gnd),
+	.o(\ain~input_o ));
+// synopsys translate_off
+defparam \ain~input .bus_hold = "false";
+defparam \ain~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X25_Y15_N0
+cycloneive_lcell_comb \U2|sout~0 (
+// Equation(s):
+// \U2|sout~0_combout  = \cin~input_o  $ (\bin~input_o  $ (\ain~input_o ))
+
+	.dataa(\cin~input_o ),
+	.datab(gnd),
+	.datac(\bin~input_o ),
+	.datad(\ain~input_o ),
+	.cin(gnd),
+	.combout(\U2|sout~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \U2|sout~0 .lut_mask = 16'hA55A;
+defparam \U2|sout~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X25_Y15_N18
+cycloneive_lcell_comb \U3~0 (
+// Equation(s):
+// \U3~0_combout  = (\cin~input_o  & ((\bin~input_o ) # (\ain~input_o ))) # (!\cin~input_o  & (\bin~input_o  & \ain~input_o ))
+
+	.dataa(\cin~input_o ),
+	.datab(gnd),
+	.datac(\bin~input_o ),
+	.datad(\ain~input_o ),
+	.cin(gnd),
+	.combout(\U3~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \U3~0 .lut_mask = 16'hFAA0;
+defparam \U3~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+assign sout = \sout~output_o ;
+
+assign cout = \cout~output_o ;
+
+endmodule
