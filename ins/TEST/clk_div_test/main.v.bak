@@ -1,0 +1,12 @@
+//
+module main #(
+    .feq_ori(10),
+    .feq_out(2),
+) (
+    input clk,
+    input rst_n,
+
+    output clk_div
+);
+    
+endmodule

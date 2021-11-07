@@ -1,0 +1,30 @@
+// 8_SEG_LED
+module seg_8_led(
+	input [3;0] byte,
+	
+	output [15:0] seg);
+	//
+	always @(byte) begin
+		case (byte)
+			1'H0: seg = 8'b1100_0000;
+			1'H1: seg = 8'b1111_1001;
+			1'H2: seg = 8'b1010_0100; 
+			1'H3: seg = 8'b1011_0000;
+			1'H4: seg = 8'b1001_1001; 
+			1'H5: seg = 8'b1001_0010;
+			1'H6: seg = 8'b1000_0010; 
+			1'H7: seg = 8'b1111_1000;
+			1'H8: seg = 8'b1000_0000; 
+			1'H9: seg = 8'b1001_0000;
+			1'HA: seg = 8'b1000_1000; 
+			1'HB: seg = 8'b1000_0011;
+			1'HC: seg = 8'b1100_0110; 
+			1'HD: seg = 8'b1010_0001;
+			1'HE: seg = 8'b1000_0110; 
+			1'HF: seg = 8'b1000_1110;
+			default: seg = 8'b1111_1111;
+		endcase
+	end
+	
+	
+endmodule

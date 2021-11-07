@@ -1,0 +1,12 @@
+*doc*/
+*par*/
+*sim*/
+*db*/
+*incremental_db*/
+*output_files*/
+*simulation*/
+
+*.vwf
+*.ipinfo
+*.qpf
+*.qws
