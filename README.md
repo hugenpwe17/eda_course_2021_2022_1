@@ -15,8 +15,8 @@ HelloWorld.class
 bin/  
 bin/gen/  
 忽略.class的所有文件  
-*.class
+*.class  
 忽略名称中末尾为ignore的文件夹  
-*ignore/
+*ignore/  
 忽略名称中包含ignore的文件夹  
-*ignore*/
+*ignore*/  
