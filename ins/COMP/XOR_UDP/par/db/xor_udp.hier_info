@@ -1,8 +1,0 @@
-|xor_udp
-DOUT <= comb.DB_MAX_OUTPUT_PORT_TYPE
-X1 => comb.IN0
-X1 => comb.IN0
-X2 => comb.IN1
-X2 => comb.IN1
-
-

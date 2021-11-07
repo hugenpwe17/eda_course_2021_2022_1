@@ -1,8 +1,0 @@
-vendor_name = ModelSim
-source_file = 1, C:/altera/13.1/ins/COMP/XOR_UDP/rtl/xor_udp.v
-source_file = 1, C:/altera/13.1/ins/COMP/XOR_UDP/par/db/xor_udp.cbx.xml
-design_name = xor_udp
-instance = comp, \DOUT~output\, DOUT~output, xor_udp, 1
-instance = comp, \X2~input\, X2~input, xor_udp, 1
-instance = comp, \X1~input\, X1~input, xor_udp, 1
-instance = comp, \comb~0\, comb~0, xor_udp, 1
