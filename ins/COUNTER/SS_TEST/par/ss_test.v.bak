@@ -1,0 +1,17 @@
+// Sequence signal generation and detectation test
+module SS_TEST(
+	input clk,
+	input rst_n,
+	input load,
+	
+	output seq_jug);
+	
+	// wire
+	wire [4:0] net;
+	// reg
+	reg [15:0] seq;
+	//
+	SSCG U1(.clk(clk), .rst_n(rst_n), .load(load), .seq(seq), .Led(net));
+	SSD U2(.clk(clk), .rst_n(rst_n), .seq_bit(net[0]), .seq_jug(seq_jug));
+	
+endmodule
