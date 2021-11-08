@@ -1,13 +1,22 @@
 *doc*/
-*par*/
-*sim*/
-*db*/
-*incremental_db*/
-*output_files*/
-*simulation*/
+#*par*/
+#*sim*/
+#*db*/
+#*incremental_db*/
+#*output_files*/
+#*simulation*/
+#
+#*.vwf
+#*.ipinfo
+#*.qpf
+#*.qsf
+#*.qws
 
-*.vwf
-*.ipinfo
-*.qpf
-*.qsf
-*.qws
+# 忽略全部文件
+*
+# 不忽略目录
+# !*/
+
+# 以下写入需要 git 管理的文件后缀
+!*.v
+!*.v.bak
