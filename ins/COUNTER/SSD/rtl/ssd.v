@@ -1,16 +1,12 @@
 // Sequence Signal Detector
 module ssd(
-	input clk,
-	input rst_n,
-	input seq_bit,
-	
-	output seq_jug,
-	output reg [2:0] state	);
-	
-	//wire
-	
-	//reg
-	//reg [2:0] state;
+	input wire clk,
+	input wire rst_n,
+	input wire seq_bit,
+
+	output wire seq_jug,
+	output reg [2:0] state
+	);
 	
 	// parameter
 	// parameter [15:0] seq_pre =  16'b0000_1101_1001_0101;
@@ -27,33 +23,34 @@ module ssd(
 		else begin
 			case(state)
 				idle: begin
-					if(seq_bit == 1) state <= s1;
+					if(seq_bit == 1'b1) state <= s1;
 					else state <= idle;
 				end
 				s1:begin
-					if(seq_bit == 0) state <= s2;
+					if(seq_bit == 1'b0) state <= s2;
 					else state <= s1;
 				end
 				s2:begin
-					if(seq_bit == 1) state <= s3;
+					if(seq_bit == 1'b1) state <= s3;
 					else state <= idle;
 				end
 				s3:begin
-					if(seq_bit == 1) state <= s4;
+					if(seq_bit == 1'b1) state <= s4;
 					else state <= s2;
 				end
 				s4:begin
-					if(seq_bit == 0) state <= s5;
+					if(seq_bit == 1'b0) state <= s5;
 					else state <= idle;
 				end
 				s5:begin
-					if(seq_bit == 0) state <= idle;
+					if(seq_bit == 1'b0) state <= idle;
 					else state <= s3;
 				end
 				default: state <= idle;
 			endcase
 		end
 	end
-	assign seq_jug = (state == s5) ? 1:0;
+
+	assign seq_jug = (state == s5) ? 1'b1:1'b0;
 
 endmodule

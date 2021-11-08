@@ -5,7 +5,8 @@ module sscg(
 	input load,
 	
 	output reg [15:0] seq,
-	output wire [4:0] Led );
+	output wire [4:0] Led 
+	);
 	
 	// wire
 	// reg
@@ -15,7 +16,7 @@ module sscg(
 	
 	// Shift register
 	always@(posedge clk, negedge rst_n) begin
-		if(~rst_n) seq <= 0;
+		if(!rst_n) seq <= 0;
 		else if(load) seq <= seq_pre;
 		else begin
 			seq <= {seq[14:0],seq[15]};
