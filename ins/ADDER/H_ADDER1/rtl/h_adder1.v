@@ -5,9 +5,6 @@ module h_adder1(
 	output sout,
 	output cout
 	);
-	// reg
-	
-	// wire
 	
 	// main code
 	assign sout = ain ^ bin;

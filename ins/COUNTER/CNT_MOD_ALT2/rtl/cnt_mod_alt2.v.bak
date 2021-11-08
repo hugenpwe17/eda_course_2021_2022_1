@@ -1,0 +1,101 @@
+// module-alterable counter, which can be switched to 50 or 120
+module cnt_mod_alt2 (
+    //clk时钟信号，rst重置信号，en使能信号，switch模切换信号
+    input clk,
+    input rst,
+    input en,
+    input switch,
+    
+    //output reg[6:0] SG0,SG1,SG2;
+    output reg clk_div,
+    output reg  [11:0]  num_bin,
+    output reg [6:0] SG0,
+    output reg [6:0] SG1,
+    output reg [6:0] SG2
+);
+    //parameter
+	parameter WIDTH = 25;
+    //模24
+	parameter model_1 = 12'b0000_0010_0011;
+    //模150
+	parameter model_2 = 12'b0001_0100_1001;
+    
+    //wire
+	//gw个位，sw十位，bw百位
+	wire [3:0] gw,sw,bw;
+	//clk_div分频时钟信号，cnt分频计数寄存器，model模数寄存器，num_bin计数寄存器
+	reg [WIDTH-1:0] cnt;
+    reg [11:0] model
+	// 50MHZ分频
+	always@(posedge clk)
+		begin 
+			cnt = cnt + 1;
+			//if(cnt > 49_999_999)
+			if(cnt > 4) 
+				begin
+					clk_div = 1'b1;
+					cnt = 1'b0;
+				end
+			else
+				clk_div = 1'b0;
+		end		
+	// 静态数码管译码
+	always@(posedge clk_div)
+	begin
+		case(gw) // 个位
+				0:SG0<=7'b100_0000; 1:SG0<=7'b111_1001;
+            2:SG0<=7'b010_0100; 3:SG0<=7'b011_0000;
+            4:SG0<=7'b001_1001; 5:SG0<=7'b001_0010;
+            6:SG0<=7'b000_0010; 7:SG0<=7'b111_1000;
+            8:SG0<=7'b000_0000; 9:SG0<=7'b001_0000; //7段译码值
+				default:SG0=7'b111_1111;
+		endcase
+		case(sw) // 十位
+				0:SG1<=7'b100_0000; 1:SG1<=7'b111_1001;
+            2:SG1<=7'b010_0100; 3:SG1<=7'b011_0000;
+            4:SG1<=7'b001_1001; 5:SG1<=7'b001_0010;
+            6:SG1<=7'b000_0010; 7:SG1<=7'b111_1000;
+            8:SG1<=7'b000_0000; 9:SG1<=7'b001_0000; //7段译码值
+				default:SG1=7'b111_1111;
+		endcase
+		case(bw) // 百位
+            0:SG2<=7'b100_0000; 1:SG2<=7'b111_1001;
+            2:SG2<=7'b010_0100; 3:SG2<=7'b011_0000;
+            4:SG2<=7'b001_1001; 5:SG2<=7'b001_0010;
+            6:SG2<=7'b000_0010; 7:SG2<=7'b111_1000;
+            8:SG2<=7'b000_0000; 9:SG2<=7'b001_0000; //7段译码值
+				default:SG2 = 7'b111_1111;//7段共阳极消隐为7FH
+		endcase 
+   end
+	// 模切换
+	always@(switch)
+		if(!switch)
+			model = model_1;
+		else
+			model = model_2;
+	
+	assign gw = num_bin[3:0];
+	assign sw = num_bin[7:4];
+	assign bw = num_bin[11:8];
+	// BCD计数
+	always@(posedge clk_div, negedge rst)
+		begin
+			if(!rst)
+				num_bin = 0;
+			else if(en)
+				begin
+					if(num_bin < model)
+						if(gw == 9)
+							begin
+								num_bin = num_bin + 7;
+								if(sw == 9)
+									num_bin = num_bin + 96;
+							end
+						else 
+							num_bin = num_bin + 1;
+					else
+						num_bin = 0;
+				end
+		end
+
+endmodule
