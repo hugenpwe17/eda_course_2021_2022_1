@@ -1,8 +1,13 @@
 // system clock frequence divider
 // system clock : 50MHZ
-// output clock frequence: 5HZ
+// output clock frequence: 5HZ (error! in fact ,it's double)
 
-module clk_div (
+module clk_div #(
+    // system clock frequence(HZ)
+    parameter feq_ori = 50_000_000,
+    // ferquence(HZ) of clock to be output
+    parameter feq_out = 5
+) (
     // input signal：original clock
     input clk,
     // input signal：reset 
@@ -11,10 +16,6 @@ module clk_div (
     output clk_div
 );
 	// parameter
-	// system clock frequence(HZ)
-    parameter feq_ori = 50_000_000;
-    // ferquence(HZ) of clock to be output
-    parameter feq_out = 5;
     // full cycle counter
     parameter full_times = (feq_ori / feq_out) - 1;
     // half cycle conter

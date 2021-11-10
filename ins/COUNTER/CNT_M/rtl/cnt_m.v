@@ -1,14 +1,16 @@
 // arbitrary model counter
 // input width = 4
 // counter model = 16
-module cnt_m (
+
+module cnt_m #(
+    // parameter
+    parameter width = 4,
+    parameter model = 16
+) (
     input wire sys_clk,
     input wire sys_rst_n,
     output reg [width-1:0] cnt
 );
-    // parameter
-    parameter width = 4;
-    parameter model = 16;
     //
     always @(posedge sys_clk, negedge sys_rst_n) begin
         if(!sys_rst_n)
