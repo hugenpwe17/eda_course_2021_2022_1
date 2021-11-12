@@ -31,9 +31,9 @@ module cnt_mod_alt2 (
 	// 50MHZ system clock to 1HZ clock
 	always@(posedge clk)begin 
         cnt = cnt + 1'b1;
-        if(cnt > 24'd49_999_999)begin
+        // if(cnt > 24'd49_999_999)begin
         // 4 for test 
-        //if(cnt > 4)begin
+        if(cnt > 4)begin
             clk_div = 1'b1;
             cnt = 1'b0;
         end
@@ -80,21 +80,26 @@ module cnt_mod_alt2 (
 	// BCD counter
 	always@(posedge clk_div, negedge rst)begin
         if(!rst)
-            num_bin = 0;
+            num_bin <= 0;
         else if(en)begin
             if(num_bin < model)begin
                 if(gw == 9)begin
-                    // BCD tens digits carry 
-                    num_bin = num_bin + 12'd7;
                     if(sw == 9)
                         // BCD hundred digits carry
-                        num_bin = num_bin + 12'd96;
+                        num_bin <= num_bin + 8'h67;
+                    else 
+                        // BCD tens digits carry 
+                        num_bin <= num_bin + 4'h7;
                 end
                 else 
-                    num_bin = num_bin + 1'b1;
+                    num_bin <= num_bin + 1'b1;
             end 
             else
-                num_bin = 1'b0;
+                num_bin <= 1'b0;
+        end
+        else begin
+            // off state: reserve num
+            num_bin <= num_bin;
         end
     end
 

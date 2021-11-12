@@ -6,8 +6,8 @@ module main (
 );
 
 	clk_div#(
-		.feq_ori ( 5 		),
-		.feq_out ( 5 		)
+		.feq_ori ( 50_000_000 		),
+		.feq_out ( 1000 		)
 	)u_clk_div(
 		.clk     ( clk     	),
 		.rst_n   ( rst_n   	),
