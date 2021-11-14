@@ -11,9 +11,8 @@ module led_traffic_top (
     // parameter
     parameter   MGCR = 2'd00, MYCR = 2'd01,
                 MRCG = 2'd10, MRCY = 2'd11;
-    parameter div_coeff = 32'd10_000_000;
     // parameter div_coeff = 32'd50_000_000;
-    // parameter div_coeff = 32'd10;
+    parameter div_coeff = 32'd6;
 
     // register
     reg [1:0] state;
@@ -229,8 +228,8 @@ module led_traffic_top (
     end
 
     cnt_seg_dync#(
-        .stay_time ( 16'd50_000 )
-        // .stay_time ( 16'd1 )
+        // .stay_time ( 16'd50_000 )
+        /.stay_time ( 16'd1 )
     )u_cnt_seg_dync(
         .clk   ( clk   ),
         .rst_n ( rst_n ),
