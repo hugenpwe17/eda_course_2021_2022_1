@@ -36,8 +36,8 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY "Cyclone V"
-set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE10F17C8
 set_global_assignment -name TOP_LEVEL_ENTITY clock_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:26:41  NOVEMBER 15, 2021"
@@ -53,55 +53,28 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_s
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_AF14 -to clk
+set_location_assignment PIN_M2 -to clk
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_M1 -to rst_n
+set_global_assignment -name VERILOG_FILE ../rtl/cnt_seg_dync.v
 set_global_assignment -name VERILOG_FILE ../rtl/cnt_seg_static.v
 set_global_assignment -name VERILOG_FILE ../rtl/clock_top.v
 set_global_assignment -name VERILOG_FILE ../rtl/clock.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform1.vwf
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_location_assignment PIN_Y16 -to rst_n
-set_location_assignment PIN_AE26 -to sd0[0]
-set_location_assignment PIN_AE27 -to sd0[1]
-set_location_assignment PIN_AE28 -to sd0[2]
-set_location_assignment PIN_AG27 -to sd0[3]
-set_location_assignment PIN_AF28 -to sd0[4]
-set_location_assignment PIN_AG28 -to sd0[5]
-set_location_assignment PIN_AH28 -to sd0[6]
-set_location_assignment PIN_AJ29 -to sd1[0]
-set_location_assignment PIN_AH29 -to sd1[1]
-set_location_assignment PIN_AH30 -to sd1[2]
-set_location_assignment PIN_AG30 -to sd1[3]
-set_location_assignment PIN_AF29 -to sd1[4]
-set_location_assignment PIN_AF30 -to sd1[5]
-set_location_assignment PIN_AD27 -to sd1[6]
-set_location_assignment PIN_AB23 -to mn0[0]
-set_location_assignment PIN_AE29 -to mn0[1]
-set_location_assignment PIN_AD29 -to mn0[2]
-set_location_assignment PIN_AC28 -to mn0[3]
-set_location_assignment PIN_AD30 -to mn0[4]
-set_location_assignment PIN_AC29 -to mn0[5]
-set_location_assignment PIN_AC30 -to mn0[6]
-set_location_assignment PIN_AD26 -to mn1[0]
-set_location_assignment PIN_AC27 -to mn1[1]
-set_location_assignment PIN_AD25 -to mn1[2]
-set_location_assignment PIN_AC25 -to mn1[3]
-set_location_assignment PIN_AB28 -to mn1[4]
-set_location_assignment PIN_AB25 -to mn1[5]
-set_location_assignment PIN_AB22 -to mn1[6]
-set_location_assignment PIN_AA24 -to hr0[0]
-set_location_assignment PIN_Y23 -to hr0[1]
-set_location_assignment PIN_Y24 -to hr0[2]
-set_location_assignment PIN_W22 -to hr0[3]
-set_location_assignment PIN_W24 -to hr0[4]
-set_location_assignment PIN_V23 -to hr0[5]
-set_location_assignment PIN_W25 -to hr0[6]
-set_location_assignment PIN_V25 -to hr1[0]
-set_location_assignment PIN_AA28 -to hr1[1]
-set_location_assignment PIN_Y27 -to hr1[2]
-set_location_assignment PIN_AB27 -to hr1[3]
-set_location_assignment PIN_AB26 -to hr1[4]
-set_location_assignment PIN_AA26 -to hr1[5]
-set_location_assignment PIN_AA25 -to hr1[6]
+set_location_assignment PIN_M11 -to seg[0]
+set_location_assignment PIN_N12 -to seg[1]
+set_location_assignment PIN_C9 -to seg[2]
+set_location_assignment PIN_N13 -to seg[3]
+set_location_assignment PIN_M10 -to seg[4]
+set_location_assignment PIN_N11 -to seg[5]
+set_location_assignment PIN_P11 -to seg[6]
+set_location_assignment PIN_D9 -to seg[7]
+set_location_assignment PIN_N16 -to sel[0]
+set_location_assignment PIN_N15 -to sel[1]
+set_location_assignment PIN_P16 -to sel[2]
+set_location_assignment PIN_P15 -to sel[3]
+set_location_assignment PIN_R16 -to sel[4]
+set_location_assignment PIN_T15 -to sel[5]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
