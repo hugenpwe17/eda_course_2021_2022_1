@@ -5,15 +5,16 @@ module led_traffic_top (
 
     output reg [23:0] num,
     output reg [5:0] led,
-    output wire [5:0] sel,
-    output wire [7:0] seg 
+    // output wire [5:0] sel,
+    output wire [7:0] seg ,
+    output wire [7:0] seg1
 );
     // parameter
     parameter   MGCR = 2'd00, MYCR = 2'd01,
                 MRCG = 2'd10, MRCY = 2'd11;
-    parameter div_coeff = 32'd10_000_000;
+    // parameter div_coeff = 32'd10_000_000;
     // parameter div_coeff = 32'd50_000_000;
-    // parameter div_coeff = 32'd10;
+    parameter div_coeff = 32'd1;
 
     // register
     reg [1:0] state;
@@ -53,7 +54,7 @@ module led_traffic_top (
                     led <= 6'b001100;
                     if(flag_time) begin
                         if(num == 1'b1) begin
-                            if(flag_s == 1'b1) begin
+                            if(!flag_s == 1'b1) begin
                                 state <= MYCR;
                                 num <= 4'h4;
                             end
@@ -137,7 +138,7 @@ module led_traffic_top (
                 end 
                 MRCG: begin
                     led <= 6'b100001;
-                    if(!flag_s)begin
+                    if(flag_s)begin
                         state <= MRCY;
                         num <= 4'h4;
                     end
@@ -228,7 +229,8 @@ module led_traffic_top (
         end
     end
 
-    cnt_seg_dync#(
+    /* dynamic
+	 cnt_seg_dync#(
         .stay_time ( 16'd50_000 )
         // .stay_time ( 16'd1 )
     )u_cnt_seg_dync(
@@ -238,5 +240,17 @@ module led_traffic_top (
         .sel   ( sel   ),
         .seg   ( seg   )
     );
+	 */
+
+    cnt_seg_static u_cnt_seg_static(
+        .cnt4 ( num[3:0] ),
+        .seg  ( seg  )
+    );
+
+    cnt_seg_static u_cnt_seg_static1(
+        .cnt4 ( num[7:4] ),
+        .seg  ( seg1  )
+    );
+
 
 endmodule

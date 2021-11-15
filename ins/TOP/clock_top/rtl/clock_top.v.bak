@@ -1,0 +1,21 @@
+module clock_top (
+    input clk,
+    input rst_n,
+
+    output reg [7:0] hr,
+    output reg [7:0] mn,
+    output reg [7:0] sd 
+);
+    
+clock#(
+    .      (  )
+)u_clock(
+    .clk   ( clk   ),
+    .rst_n ( rst_n ),
+    .hr    ( hr    ),
+    .mn    ( mn    ),
+    .sd    ( sd    )
+);
+
+
+endmodule

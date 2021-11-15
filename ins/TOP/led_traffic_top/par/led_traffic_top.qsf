@@ -36,8 +36,8 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY "Cyclone IV E"
-set_global_assignment -name DEVICE EP4CE10F17C8
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY led_traffic_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:13:06  NOVEMBER 12, 2021"
@@ -46,7 +46,6 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
-set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
@@ -56,6 +55,10 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_s
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_AF14 -to clk
+set_location_assignment PIN_Y16 -to rst_n
+set_global_assignment -name VERILOG_FILE ../rtl/cnt_seg_static.v
 set_global_assignment -name VERILOG_FILE "C:\\altera\\13.1\\eda_fpga\\ins\\TOP\\led_traffic_top\\rtl\\cnt_seg_dync.v"
 set_global_assignment -name VERILOG_FILE "C:\\altera\\13.1\\eda_fpga\\ins\\TOP\\led_traffic_top\\rtl\\led_traffic_top.v"
 set_global_assignment -name VERILOG_FILE "C:\\altera\\13.1\\eda_fpga\\ins\\TOP\\led_traffic_top\\rtl\\cnt_down.v"
@@ -68,23 +71,6 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform3.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform4.vwf
 set_global_assignment -name VERILOG_FILE ../rtl/cnt_seg_dync.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform5.vwf
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_M2 -to clk
-set_location_assignment PIN_M1 -to rst_n
-set_location_assignment PIN_N16 -to sel[0]
-set_location_assignment PIN_N15 -to sel[1]
-set_location_assignment PIN_P16 -to sel[2]
-set_location_assignment PIN_P15 -to sel[3]
-set_location_assignment PIN_R16 -to sel[4]
-set_location_assignment PIN_T15 -to sel[5]
-set_location_assignment PIN_M11 -to seg[0]
-set_location_assignment PIN_N12 -to seg[1]
-set_location_assignment PIN_C9 -to seg[2]
-set_location_assignment PIN_N13 -to seg[3]
-set_location_assignment PIN_M10 -to seg[4]
-set_location_assignment PIN_N11 -to seg[5]
-set_location_assignment PIN_P11 -to seg[6]
-set_location_assignment PIN_D9 -to seg[7]
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform6.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform7.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform8.vwf
@@ -98,12 +84,6 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform15.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform16.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform17.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform18.vwf
-set_location_assignment PIN_T8 -to led[5]
-set_location_assignment PIN_T7 -to led[4]
-set_location_assignment PIN_T6 -to led[3]
-set_location_assignment PIN_T5 -to led[2]
-set_location_assignment PIN_T4 -to led[1]
-set_location_assignment PIN_T3 -to led[0]
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform19.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform20.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform21.vwf
@@ -111,5 +91,25 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform22.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform23.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform24.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform25.vwf
-set_location_assignment PIN_A4 -to flag_s
+set_location_assignment PIN_AA14 -to flag_s
+set_location_assignment PIN_AE26 -to seg[0]
+set_location_assignment PIN_AE27 -to seg[1]
+set_location_assignment PIN_AE28 -to seg[2]
+set_location_assignment PIN_AG27 -to seg[3]
+set_location_assignment PIN_AF28 -to seg[4]
+set_location_assignment PIN_AG28 -to seg[5]
+set_location_assignment PIN_AH28 -to seg[6]
+set_location_assignment PIN_AJ29 -to seg1[0]
+set_location_assignment PIN_AH29 -to seg1[1]
+set_location_assignment PIN_AH30 -to seg1[2]
+set_location_assignment PIN_AG30 -to seg1[3]
+set_location_assignment PIN_AF29 -to seg1[4]
+set_location_assignment PIN_AF30 -to seg1[5]
+set_location_assignment PIN_AD27 -to seg1[6]
+set_location_assignment PIN_V16 -to led[0]
+set_location_assignment PIN_W16 -to led[1]
+set_location_assignment PIN_V17 -to led[2]
+set_location_assignment PIN_W20 -to led[3]
+set_location_assignment PIN_W21 -to led[4]
+set_location_assignment PIN_Y21 -to led[5]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
