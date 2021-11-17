@@ -27,12 +27,16 @@ module clock_top (
 
     output wire [1:0] option_location
 );
-
+    // wire
     wire flag_1day;
+
+    // register
     
+    // initialization
+
 
     clock#(
-        .cnt_max   ( 28'd12 )
+        .cnt_max   ( 28'd50_000_000 )
     )u_clock(
         .clk       ( clk       ),
         .rst_n     ( rst_n     ),
@@ -76,7 +80,7 @@ module clock_top (
     );
 
     cnt_seg_dync#(
-        .stay_time ( 16'd2 )
+        .stay_time ( 16'd50_000 )
     )u_cnt_seg_dync(
         .clk   ( clk   ),
         .rst_n ( rst_n ),
