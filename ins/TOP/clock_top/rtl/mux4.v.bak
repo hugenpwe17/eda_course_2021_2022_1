@@ -1,0 +1,27 @@
+// mux 4
+module mux4 (
+    input clk,
+
+    input set_mod,
+    input set_alarm,
+
+    input [7:0] hr,
+    input [7:0] mn,
+    input [7:0] sd,
+
+    input [7:0] hr1,
+    input [7:0] mn1,
+    input [7:0] sd1,
+
+    output [23:0] tm
+);
+    always @(posedge clk) begin
+        if(set_mod && !set_alarm) begin
+            tm <= {hr_cal,mn_cal,sd_cal};
+        end
+        else if(!set_mod) begin
+            tm <= {hr,mn,sd};
+        end
+    end
+
+endmodule

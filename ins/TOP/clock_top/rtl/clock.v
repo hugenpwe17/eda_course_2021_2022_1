@@ -4,9 +4,18 @@ module clock #(
     input clk,
     input rst_n,
 
+    input set_mod,
+    input set_alarm,
+
+    input time_add,
+
+    input [7:0] hr_cal,
+    input [7:0] mn_cal,
+    input [7:0] sd_cal,
+
     output reg [7:0] hr,
     output reg [7:0] mn,
-    output reg [7:0] sd 
+    output reg [7:0] sd
 );
     // register
     reg [27:0] cnt;
@@ -29,60 +38,66 @@ module clock #(
         end
     end
     // clock
-    always @(posedge clk, negedge rst_n) begin
-        if(!rst_n) begin
-            hr <= 1'b0;
-            mn <= 1'b0;
-            sd <= 1'b0;
-        end
-        else begin
-            if(flag_1s) begin
-                if(sd[3:0] == 4'h9) begin
-                    if(sd[7:4] == 4'h5) begin
-                        if(mn[3:0] == 4'h9) begin
-                            if(mn[7:4] == 4'h5) begin
-                                if(hr[3:0] == 4'h9) begin
-                                    sd <= 1'b0;
-                                    mn <= 1'b0;
-                                    hr <= hr + 4'h7;
-                                    
-                                end
-                                else begin
-                                    if(hr == 8'h23) begin
+    always @(posedge clk) begin
+        if(!set_mod) begin
+            if(!rst_n) begin
+                hr <= 1'b0;
+                mn <= 1'b0;
+                sd <= 1'b0;
+            end
+            else begin
+                if(flag_1s) begin
+                    if(sd[3:0] == 4'h9) begin
+                        if(sd[7:4] == 4'h5) begin
+                            if(mn[3:0] == 4'h9) begin
+                                if(mn[7:4] == 4'h5) begin
+                                    if(hr[3:0] == 4'h9) begin
                                         sd <= 1'b0;
                                         mn <= 1'b0;
-                                        hr <= 1'b0;
+                                        hr <= hr + 4'h7; 
                                     end
                                     else begin
-                                        sd <= 1'b0;
-                                        mn <= 1'b0;
-                                        hr <= hr + 4'h1;    
+                                        if(hr == 8'h23) begin
+                                            sd <= 1'b0;
+                                            mn <= 1'b0;
+                                            hr <= 1'b0;
+                                        end
+                                        else begin
+                                            sd <= 1'b0;
+                                            mn <= 1'b0;
+                                            hr <= hr + 4'h1; 
+                                        end
                                     end
+                                end
+                                else begin
+                                    sd <= 1'b0;
+                                    mn <= mn + 4'h7;
                                 end
                             end
                             else begin
                                 sd <= 1'b0;
-                                mn <= mn + 4'h7;
+                                mn <= mn + 4'h1;
                             end
                         end
                         else begin
-                            sd <= 1'b0;
-                            mn <= mn + 4'h1;
+                            sd <= sd + 4'h7;
                         end
                     end
                     else begin
-                        sd <= sd + 4'h7;
+                        sd <= sd + 4'h1;
                     end
                 end
                 else begin
-                    sd <= sd + 4'h1;
+                    hr <= hr;
+                    mn <= mn;
+                    sd <= sd;
                 end
             end
-            else begin
-                hr <= hr;
-                mn <= mn;
-                sd <= sd;
-            end
+        end
+        else if(time_add /*set_mod && !set_alarm*/) begin
+            hr <= hr_cal;
+            mn <= mn_cal;
+            sd <= sd_cal;
         end
     end
 endmodule

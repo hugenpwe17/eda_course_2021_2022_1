@@ -23,9 +23,7 @@ module clock_top (
     output wire [7:0] sd_cal,
     output wire [7:0] hr,
     output wire [7:0] mn,
-    output wire [7:0] sd,
-
-    output wire [1:0] option_location
+    output wire [7:0] sd
 );
 
     wire flag_1day;
@@ -38,17 +36,16 @@ module clock_top (
         .rst_n     ( rst_n     ),
         .set_mod   ( set_mod   ),
         .set_alarm ( set_alarm ),
-        .time_add  ( time_add  ),
         .hr_cal    ( hr_cal    ),
         .mn_cal    ( mn_cal    ),
         .sd_cal    ( sd_cal    ),
         .hr        ( hr        ),
         .mn        ( mn        ),
-        .sd        ( sd        )
+        .sd        ( sd        ),
+        .flag_1day ( flag_1day )
     );
 
     time_calibration u_time_calibration(
-        .clk          ( clk          ),    
         .time_add     ( time_add     ),
         .set_location ( set_location ),
         .set_mod      ( set_mod      ),
@@ -58,8 +55,7 @@ module clock_top (
         .sd           ( sd           ),
         .hr_cal       ( hr_cal       ),
         .mn_cal       ( mn_cal       ),
-        .sd_cal       ( sd_cal       ),
-        .option_location(option_location)
+        .sd_cal       ( sd_cal       )
     );
 
     mux4 u_mux4(

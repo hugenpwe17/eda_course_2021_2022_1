@@ -10,6 +10,7 @@ module cnt_seg_dync #(
     output reg [5:0] sel,
     output reg [7:0] seg
 );
+
     // register
     reg [15:0] cnt;
     reg flag_stay;
