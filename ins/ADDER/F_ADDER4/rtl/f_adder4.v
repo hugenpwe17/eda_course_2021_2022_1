@@ -23,23 +23,23 @@ module f_adder4 (
         .bin  ( bin[1] ),
         .cin  ( net[0]  ),
         .sout ( sout[1] ),
-        .cout ( net[1]  )
+        .cout ( cout /*net[1]*/  )
     );
 
-    f_adder1 u_f_adder1_3(
-        .ain  ( ain[2] ),
-        .bin  ( bin[2] ),
-        .cin  ( net[1]  ),
-        .sout ( sout[2] ),
-        .cout ( net[2]  )
-    );
-
-    f_adder1 u_f_adder1_4(
-        .ain  ( ain[3] ),
-        .bin  ( bin[3] ),
-        .cin  ( net[2]  ),
-        .sout ( sout[3] ),
-        .cout ( cout    )
-    );
+//    f_adder1 u_f_adder1_3(
+//        .ain  ( ain[2] ),
+//        .bin  ( bin[2] ),
+//        .cin  ( net[1]  ),
+//        .sout ( sout[2] ),
+//        .cout ( net[2]  )
+//    );
+//
+//    f_adder1 u_f_adder1_4(
+//        .ain  ( ain[3] ),
+//        .bin  ( bin[3] ),
+//        .cin  ( net[2]  ),
+//        .sout ( sout[3] ),
+//        .cout ( cout    )
+//    );
 
 endmodule

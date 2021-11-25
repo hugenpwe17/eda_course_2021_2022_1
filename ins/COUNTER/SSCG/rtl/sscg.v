@@ -15,6 +15,7 @@ module sscg(
 	// parameter [4:0] seq_dec = 5'b10110;
 	
 	// Shift register
+	/*
 	always@(posedge clk, negedge rst_n) begin
 		if(!rst_n) seq <= 0;
 		else if(load) seq <= seq_pre;
@@ -22,7 +23,19 @@ module sscg(
 			seq <= {seq[14:0],seq[15]};
 		end
 	end
-		
+	*/
+	always@(posedge clk, negedge rst_n) begin
+		if(!rst_n) seq <= seq_pre;
+		else begin
+			if(load) begin
+				seq <= {seq[14:0],seq[15]};
+			end
+			else begin
+				seq <= seq;
+			end
+		end
+	end
+
 	assign Led = seq[4:0];
 
 endmodule

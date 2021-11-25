@@ -1,0 +1,8 @@
+module text (
+	input a，
+	input b,
+
+	output c
+);
+	xor_udp u1(c, a, b)	
+endmodule

@@ -18,15 +18,15 @@ module SS_TEST(
 	// main code
 
 	sscg u_sscg(
-		.clk   ( !clk   ),
+		.clk   ( clk   ),
 		.rst_n ( rst_n ),
-		.load  ( !load  ),
+		.load  ( load  ),
 		.seq   ( seq   ),
 		.Led   ( net   )
 	);
 
 	ssd u_ssd(
-    .clk     ( !clk     ),
+    .clk     ( clk     ),
     .rst_n   ( rst_n   ),
     .seq_bit ( net[0]  ),
     .seq_jug ( seq_jug ),

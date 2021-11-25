@@ -1,14 +1,14 @@
-// 整点报时
-module timebar(
-    // ports
+module timebar (
     input clk,
     input rst_n,
 
-    input [7:0] hr,
+    input set_mod,
+    input set_alarm,
+
     input [7:0] mn,
     input [7:0] sd,
 
-    output reg led
+    output reg [3:0] led
 );
     always @(posedge clk, negedge rst_n) begin
         if(!rst_n) begin
@@ -16,7 +16,7 @@ module timebar(
         end
         else begin
             if(mn == 8'h59 && sd >= 8'h56) begin
-                led <= ~led;
+                led <= 4'b1111;
             end
             else begin
                 led <= 1'b0; 
