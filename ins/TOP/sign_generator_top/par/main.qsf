@@ -56,7 +56,9 @@ set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:/altera/13.1/eda_fp
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform1.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform2.vwf
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform3.vwf
 set_global_assignment -name MIF_FILE ../rtl/ip_core/rom/initialization/square.mif
 set_global_assignment -name MIF_FILE ../rtl/ip_core/rom/initialization/sawtooth.mif
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform4.vwf
+set_global_assignment -name HEX_FILE ../rtl/ip_core/rom/initialization/cos.hex
