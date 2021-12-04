@@ -16,8 +16,8 @@ rtl: 存放verilog代码文件
 sim: 存放仿真代码(testbench)文件和仿真结果  
 
 # 文件夹说明
-ins         实例文件
-├───
+ins         实例文件 
+├─── 
 │   ADDER       加法器  
 |   COMP        基本元件  
 |   COUNTER     计数器  
