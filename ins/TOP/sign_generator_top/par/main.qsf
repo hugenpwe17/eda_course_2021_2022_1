@@ -45,22 +45,16 @@ set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
-set_global_assignment -name VERILOG_FILE ../rtl/ip_core/rom/rom_sin.v
-set_global_assignment -name VERILOG_FILE ../rtl/main.v
-set_global_assignment -name VERILOG_FILE ../rtl/ip_core/counter/counter64.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform.vwf
 set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:/altera/13.1/eda_fpga/ins/TOP/sign_generator_top/par/simulation/qsim/" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
-set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform1.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform2.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform3.vwf
-set_global_assignment -name MIF_FILE ../rtl/ip_core/rom/initialization/square.mif
-set_global_assignment -name MIF_FILE ../rtl/ip_core/rom/initialization/sawtooth.mif
+set_global_assignment -name VERILOG_FILE ../rtl/ip_core/rom/rom_square.v
+set_global_assignment -name VERILOG_FILE ../rtl/ip_core/rom/rom_sin.v
+set_global_assignment -name VERILOG_FILE ../rtl/ip_core/rom/rom_sawtooth.v
+set_global_assignment -name VERILOG_FILE ../rtl/main.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform4.vwf
-set_global_assignment -name HEX_FILE ../rtl/ip_core/rom/initialization/cos.hex
-set_global_assignment -name HEX_FILE ../rtl/ip_core/rom/initialization/sawtooth.hex
-set_global_assignment -name HEX_FILE ../rtl/ip_core/rom/initialization/square.hex
+set_global_assignment -name HEX_FILE ../rtl/ip_core/rom/sin.hex
+set_global_assignment -name HEX_FILE ../rtl/ip_core/rom/sawtooth.hex
+set_global_assignment -name HEX_FILE ../rtl/ip_core/rom/square.hex

@@ -22,9 +22,9 @@ module main (
 
 	reg [8:0] Address = 9'd0; // Address of wave data
 	
-	wire [7:0] wave_Sin;	
-	wire [7:0] wave_Sawtooth;	
-	wire [7:0] wave_Square;	
+	reg [7:0] wave_Sin;	
+	reg [7:0] wave_Sawtooth;	
+	reg [7:0] wave_Square;	
 
 	// Wave switch signal edge detecting
 	always @(posedge clk) begin
@@ -65,7 +65,7 @@ module main (
 	// Amplitude switch
 	always @(posedge clk, negedge rst_n) begin
 		if(!rst_n) begin
-			Amplitude <= 1'b1;
+			Amplitude <= 1'b0;
 		end
 		else begin
 			if(r_A == 2'b01) begin
@@ -84,7 +84,7 @@ module main (
 	// Frequency switch
 	always @(posedge clk, negedge rst_n) begin
 		if(!rst_n) begin
-			Frequency <= 1'b1;
+			Frequency <= 1'b0;
 		end
 		else begin
 			if(r_F == 2'b01) begin
@@ -108,7 +108,7 @@ module main (
 		end
 		else begin
 			if(r_P == 2'b01) begin
-				if(Phase == 9'd448) begin
+				if(Phase == 9'd511) begin
 					Phase <= 9'd0;
 				end
 				else begin
@@ -126,28 +126,28 @@ module main (
 	// Output Wave
 	always @(posedge clk) begin
 		case (Wave)
-			2'b00: wave_out <= wave_Sin * Amplitude;
-			2'b01: wave_out <= wave_Sawtooth * Amplitude;
-			2'b10: wave_out <= wave_Square * Amplitude;
+			2'd00: wave_out <= wave_Sin * Amplitude;
+			2'd01: wave_out <= wave_Sawtooth * Amplitude;
+			2'd10: wave_out <= wave_Square * Amplitude;
 			default: wave_out <= 12'd0; 
 		endcase
 	end
 
 	// Rom_Sin
 	rom_sin	rom_sin_inst (
-	.address ( Address ),
+	.address ( address ),
 	.clock ( clk ),
 	.q ( wave_Sin )
 	);
 	// Rom_Sawtooth
 	rom_sawtooth	rom_sawtooth_inst (
-	.address ( Address ),
+	.address ( address ),
 	.clock ( clk ),
 	.q ( wave_Sawtooth )
 	);
 	// Rom_Square
 	rom_square	rom_square_inst (
-	.address ( Address ),
+	.address ( address ),
 	.clock ( clk ),
 	.q ( wave_Square )
 	);
