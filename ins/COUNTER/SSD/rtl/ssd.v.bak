@@ -23,32 +23,26 @@ module ssd(
 		else begin
 			case(state)
 				idle: begin
-					//seq_jug <= 1'b0;
 					if(seq_bit == 1'b1) state <= s1;
 					else state <= idle;
 				end
 				s1:begin
-					//seq_jug <= 1'b0;
 					if(seq_bit == 1'b0) state <= s2;
 					else state <= s1;
 				end
 				s2:begin
-					//seq_jug <= 1'b0;
 					if(seq_bit == 1'b1) state <= s3;
 					else state <= idle;
 				end
 				s3:begin
-					//seq_jug <= 1'b0;
 					if(seq_bit == 1'b1) state <= s4;
 					else state <= s2;
 				end
 				s4:begin
-					//seq_jug <= 1'b0;
 					if(seq_bit == 1'b0) state <= s5;
 					else state <= idle;
 				end
 				s5:begin
-					//seq_jug <= 1'b0;
 					if(seq_bit == 1'b0) state <= idle;
 					else state <= s3;
 				end
@@ -57,6 +51,6 @@ module ssd(
 		end
 	end
 
-	assign seq_jug = (state == s4) ? 1'b1:1'b0;
+	assign seq_jug = (state == s5) ? 1'b1:1'b0;
 
 endmodule
