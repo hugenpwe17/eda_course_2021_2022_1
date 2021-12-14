@@ -1,4 +1,4 @@
-# eda_fpga
+# eda_fpga test
 学习EDA设计时，在FPGA上跑的一些实例  
 
 ## eda软件 
