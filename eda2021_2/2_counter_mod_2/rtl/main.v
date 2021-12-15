@@ -18,11 +18,11 @@ module main (
 );
     
     cnt_mod_alt2#(
-    .FREQ_DIV_COEFF_WIDTH ( 25 ),
-    .FREQ_DIV_COEFF       ( 25'd4 ),
-    .MODEL_WIDTH          ( 12 ),
-    .MODEL_1              ( 12'b0000_0010_0011 ),
-    .MODEL_2              ( 12'b0001_0100_1001 )
+        .FREQ_DIV_COEFF_WIDTH ( 25 ),
+        .FREQ_DIV_COEFF       ( 25'd4 ),
+        .MODEL_WIDTH          ( 12 ),
+        .MODEL_1              ( 12'b0000_0010_0011 ),
+        .MODEL_2              ( 12'b0001_0100_1001 )
     )u_cnt_mod_alt2(
         .sys_clk        ( sys_clk        ),
         .sys_rst_n      ( sys_rst_n      ),
