@@ -36,8 +36,8 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY "Cyclone V"
-set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE10F17C8
 set_global_assignment -name TOP_LEVEL_ENTITY main
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:31:00  NOVEMBER 29, 2021"
@@ -53,11 +53,11 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_s
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_AF14 -to clk
-set_location_assignment PIN_AA14 -to A_ctrl
-set_location_assignment PIN_AA15 -to F_ctrl
-set_location_assignment PIN_W15 -to P_ctrl
-set_location_assignment PIN_Y16 -to W_ctrl
+set_location_assignment PIN_M2 -to clk
+set_location_assignment PIN_E15 -to A_ctrl
+set_location_assignment PIN_M15 -to F_ctrl
+set_location_assignment PIN_M16 -to P_ctrl
+set_location_assignment PIN_E16 -to W_ctrl
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
 set_global_assignment -name SLD_NODE_CREATOR_ID 110 -section_id auto_signaltap_0
@@ -117,6 +117,45 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLE
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id auto_signaltap_0
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_M1 -to rst_n
+set_location_assignment PIN_N16 -to sel[0]
+set_location_assignment PIN_N15 -to sel[1]
+set_location_assignment PIN_P16 -to sel[2]
+set_location_assignment PIN_P15 -to sel[3]
+set_location_assignment PIN_R16 -to sel[4]
+set_location_assignment PIN_T15 -to sel[5]
+set_location_assignment PIN_M11 -to seg[0]
+set_location_assignment PIN_N12 -to seg[1]
+set_location_assignment PIN_C9 -to seg[2]
+set_location_assignment PIN_N13 -to seg[3]
+set_location_assignment PIN_M10 -to seg[4]
+set_location_assignment PIN_N11 -to seg[5]
+set_location_assignment PIN_P11 -to seg[6]
+set_location_assignment PIN_D9 -to seg[7]
+
+set_location_assignment PIN_B12 -to tmds_clk_p
+set_location_assignment PIN_A12 -to tmds_clk_n
+set_location_assignment PIN_B9 -to tmds_data_p[2]
+set_location_assignment PIN_A9 -to tmds_data_n[2]
+set_location_assignment PIN_B10 -to tmds_data_p[1]
+set_location_assignment PIN_A10 -to tmds_data_n[1]
+set_location_assignment PIN_B11 -to tmds_data_p[0]
+set_location_assignment PIN_A11 -to tmds_data_n[0]
+
+set_global_assignment -name VERILOG_FILE ../rtl/ip_core/pll_clk/pll_clk.v
+set_global_assignment -name VERILOG_FILE ../rtl/ip_core/ddio_out/ddio_out.v
+set_global_assignment -name VERILOG_FILE ../rtl/video_driver.v
+set_global_assignment -name VERILOG_FILE ../rtl/video_display.v
+set_global_assignment -name VERILOG_FILE ../rtl/serializer_10_to_1.v
+set_global_assignment -name VERILOG_FILE ../rtl/hdmi_colorbar_top.v
+set_global_assignment -name VERILOG_FILE ../rtl/dvi_transmitter_top.v
+set_global_assignment -name VERILOG_FILE ../rtl/dvi_encoder.v
+set_global_assignment -name VERILOG_FILE ../rtl/asyn_rst_syn.v
+set_global_assignment -name VERILOG_FILE ../rtl/ram_wr.v
+set_global_assignment -name VERILOG_FILE ../rtl/ram_rd.v
+set_global_assignment -name VERILOG_FILE ../rtl/cnt_seg_dync.v
 set_global_assignment -name VERILOG_FILE ../rtl/cnt_seg_static.v
 set_global_assignment -name VERILOG_FILE ../rtl/ip_core/rom/rom_square.v
 set_global_assignment -name VERILOG_FILE ../rtl/ip_core/rom/rom_sin.v
@@ -124,49 +163,8 @@ set_global_assignment -name VERILOG_FILE ../rtl/ip_core/rom/rom_sawtooth.v
 set_global_assignment -name VERILOG_FILE ../rtl/signal_generator_control.v
 set_global_assignment -name VERILOG_FILE ../rtl/main.v
 set_global_assignment -name SIGNALTAP_FILE stp1.stp
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_location_assignment PIN_AE26 -to W_seg0[0]
-set_location_assignment PIN_AE27 -to W_seg0[1]
-set_location_assignment PIN_AE28 -to W_seg0[2]
-set_location_assignment PIN_AG27 -to W_seg0[3]
-set_location_assignment PIN_AF28 -to W_seg0[4]
-set_location_assignment PIN_AG28 -to W_seg0[5]
-set_location_assignment PIN_AH28 -to W_seg0[6]
-set_location_assignment PIN_AJ29 -to W_seg1[0]
-set_location_assignment PIN_AH29 -to W_seg1[1]
-set_location_assignment PIN_AH30 -to W_seg1[2]
-set_location_assignment PIN_AG30 -to W_seg1[3]
-set_location_assignment PIN_AF29 -to W_seg1[4]
-set_location_assignment PIN_AF30 -to W_seg1[5]
-set_location_assignment PIN_AD27 -to W_seg1[6]
-set_location_assignment PIN_AB23 -to F_seg0[0]
-set_location_assignment PIN_AE29 -to F_seg0[1]
-set_location_assignment PIN_AD29 -to F_seg0[2]
-set_location_assignment PIN_AC28 -to F_seg0[3]
-set_location_assignment PIN_AD30 -to F_seg0[4]
-set_location_assignment PIN_AC29 -to F_seg0[5]
-set_location_assignment PIN_AC30 -to F_seg0[6]
-set_location_assignment PIN_AD26 -to F_seg1[0]
-set_location_assignment PIN_AC27 -to F_seg1[1]
-set_location_assignment PIN_AD25 -to F_seg1[2]
-set_location_assignment PIN_AC25 -to F_seg1[3]
-set_location_assignment PIN_AB28 -to F_seg1[4]
-set_location_assignment PIN_AB25 -to F_seg1[5]
-set_location_assignment PIN_AB22 -to F_seg1[6]
-set_location_assignment PIN_AA24 -to A_seg0[0]
-set_location_assignment PIN_Y23 -to A_seg0[1]
-set_location_assignment PIN_Y24 -to A_seg0[2]
-set_location_assignment PIN_W22 -to A_seg0[3]
-set_location_assignment PIN_W24 -to A_seg0[4]
-set_location_assignment PIN_V23 -to A_seg0[5]
-set_location_assignment PIN_W25 -to A_seg0[6]
-set_location_assignment PIN_V25 -to A_seg1[0]
-set_location_assignment PIN_AA28 -to A_seg1[1]
-set_location_assignment PIN_Y27 -to A_seg1[2]
-set_location_assignment PIN_AB27 -to A_seg1[3]
-set_location_assignment PIN_AB26 -to A_seg1[4]
-set_location_assignment PIN_AA26 -to A_seg1[5]
-set_location_assignment PIN_AA25 -to A_seg1[6]
+set_global_assignment -name QIP_FILE ../rtl/ip_core/ram/ram2.qip
+set_global_assignment -name SOURCE_FILE db/main.cmp.rdb
+set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform4.vwf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp

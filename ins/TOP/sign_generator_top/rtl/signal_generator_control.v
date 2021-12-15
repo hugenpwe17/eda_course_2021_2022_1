@@ -9,43 +9,21 @@ module signal_generator_control (
  
     output reg [11:0] wave_out,
 
-	output reg [7:0] A_seg0,
-	output reg [7:0] A_seg1,
+	// // static seg pin
+	// output reg [7:0] W_seg0,
+	// output reg [7:0] W_seg1
 
-	output reg [7:0] F_seg0,
-	output reg [7:0] F_seg1,
+	// output reg [7:0] A_seg0,
+	// output reg [7:0] A_seg1,
 
-	output reg [7:0] W_seg0,
-	output reg [7:0] W_seg1
+	// output reg [7:0] F_seg0,
+	// output reg [7:0] F_seg1,
+
+	// dynamic seg pin 
+	output wire [5:0] sel,
+    output wire [7:0] seg
 );
-	cnt_seg_static u_cnt_seg_static1(
-		.cnt4 ( Amplitude ),
-		.seg  ( A_seg0  )
-	);
-	cnt_seg_static u_cnt_seg_static2(
-		.cnt4 ( 4'b0    ),
-		.seg  ( A_seg1  )
-	);
-
-	cnt_seg_static u_cnt_seg_static3(
-		.cnt4 ( Frequency[3:0]    ),
-		.seg  ( F_seg0  )
-	);
-	cnt_seg_static u_cnt_seg_static4(
-		.cnt4 ( {1'b0, 1'b0, Frequency[5:4]}    ),
-		.seg  ( F_seg1  )
-	);
-
-	cnt_seg_static u_cnt_seg_static5(
-		.cnt4 ( {1'b0, 1'b0, Wave}    ),
-		.seg  ( W_seg0  )
-	);
-	cnt_seg_static u_cnt_seg_static6(
-		.cnt4 ( 4'b0    ),
-		.seg  ( W_seg1  )
-	);
-
-
+	
 	reg [1:0] r_W; // Wave switch signal edge detection register
 	reg [1:0] r_A; // Amplitude switch signal edge detection register
 	reg [1:0] r_P; // Phase switch signal edge detection register
@@ -187,4 +165,45 @@ module signal_generator_control (
 	.clock ( clk ),
 	.q ( wave_Square )
 	);
+
+	// // ---------static seg--------------
+	// cnt_seg_static u_cnt_seg_static1(
+	// 	.cnt4 ( Amplitude ),
+	// 	.seg  ( A_seg0  )
+	// );
+	// cnt_seg_static u_cnt_seg_static2(
+	// 	.cnt4 ( 4'b0    ),
+	// 	.seg  ( A_seg1  )
+	// );
+
+	// cnt_seg_static u_cnt_seg_static3(
+	// 	.cnt4 ( Frequency[3:0]    ),
+	// 	.seg  ( F_seg0  )
+	// );
+	// cnt_seg_static u_cnt_seg_static4(
+	// 	.cnt4 ( {1'b0, 1'b0, Frequency[5:4]}    ),
+	// 	.seg  ( F_seg1  )
+	// );
+
+	// cnt_seg_static u_cnt_seg_static5(
+	// 	.cnt4 ( {1'b0, 1'b0, Wave}    ),
+	// 	.seg  ( W_seg0  )
+	// );
+	// cnt_seg_static u_cnt_seg_static6(
+	// 	.cnt4 ( 4'b0    ),
+	// 	.seg  ( W_seg1  )
+	// );
+
+	// ---------dynamic seg-------------
+	//
+	cnt_seg_dync#(
+		.stay_time ( 16'd50_000 )
+	)u_cnt_seg_dync(
+		.clk   ( clk   ),
+		.rst_n ( rst_n ),
+		.num   ( {4'b0, {1'b0, 1'b0, Wave}, 4'b0, Amplitude, {1'b0, 1'b0, Frequency[5:4]}, Frequency[3:0]} ),
+		.sel   ( sel   ),
+		.seg   ( seg   )
+	);
+
 endmodule
