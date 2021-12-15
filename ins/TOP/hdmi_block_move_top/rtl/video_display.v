@@ -39,6 +39,7 @@ localparam BLOCK_W = 11'd40;                    //方块宽度
 localparam BLUE    = 24'b00000000_00000000_11111111;    //屏幕边框颜色 蓝色
 localparam WHITE   = 24'b11111111_11111111_11111111;    //背景颜色 白色
 localparam BLACK   = 24'b00000000_00000000_00000000;    //方块颜色 黑色
+localparam GREEN   = 24'b00000000_11111111_00000000;  //RGB888 绿色
 
 //reg define
 reg [10:0] block_x = SIDE_W ;                             //方块左上角横坐标
@@ -126,9 +127,9 @@ always @(posedge pixel_clk ) begin
         else
         if(  (pixel_xpos >= block_x) && (pixel_xpos < block_x + BLOCK_W)
           && (pixel_ypos >= block_y) && (pixel_ypos < block_y + BLOCK_W))
-            pixel_data <= BLACK;                //绘制方块为黑色
+            pixel_data <= GREEN;                //绘制方块为黑色
         else
-            pixel_data <= WHITE;                //绘制背景为白色
+            pixel_data <= BLACK;                //绘制背景为白色
     end
 end
 
