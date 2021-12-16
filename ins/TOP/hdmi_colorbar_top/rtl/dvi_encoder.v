@@ -101,6 +101,7 @@ module dvi_encoder (
     
     c0_q    <=#1 c0;
     c0_reg  <=#1 c0_q;
+    
     c1_q    <=#1 c1;
     c1_reg  <=#1 c1_q;
 
