@@ -1,6 +1,6 @@
 //****************************************Copyright (c)***********************************//
 //原子哥在线教学平台：www.yuanzige.com
-//技术支持：www.openedv.com
+//技术支持：www.openedv.com 
 //淘宝店铺：http://openedv.taobao.com 
 //关注微信公众平台微信号："正点原子"，免费获取ZYNQ & FPGA & STM32 & LINUX资料。
 //版权所有，盗版必究。
