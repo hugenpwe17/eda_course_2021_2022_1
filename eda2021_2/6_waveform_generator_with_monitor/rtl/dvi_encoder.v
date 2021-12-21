@@ -1,3 +1,21 @@
+//////////////////////////////////////////////////////////////////////////////
+//
+//  Xilinx, Inc. 2008                 www.xilinx.com
+//
+//////////////////////////////////////////////////////////////////////////////
+//
+//  File name :       dvi_encoder.v
+//
+//  Description :     TMDS encoder  
+//
+//  Date - revision : Jan. 2008 - v 1.0
+//
+//  Author :          Bob Feng
+//
+//  Copyright 2006 Xilinx, Inc.
+//  All rights reserved
+//
+//////////////////////////////////////////////////////////////////////////////  
 `timescale 1 ps / 1ps
 
 module dvi_encoder (
@@ -83,6 +101,7 @@ module dvi_encoder (
     
     c0_q    <=#1 c0;
     c0_reg  <=#1 c0_q;
+    
     c1_q    <=#1 c1;
     c1_reg  <=#1 c1_q;
 

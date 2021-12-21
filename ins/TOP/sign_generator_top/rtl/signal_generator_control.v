@@ -23,6 +23,13 @@ module signal_generator_control (
 	output wire [5:0] sel,
     output wire [7:0] seg
 );
+
+	initial begin
+		Wave		<= 0;
+		Amplitude	<= 1;
+		Phase		<= 0;
+		Frequency	<= 1;
+	end
 	
 	reg [1:0] r_W; // Wave switch signal edge detection register
 	reg [1:0] r_A; // Amplitude switch signal edge detection register
@@ -195,13 +202,12 @@ module signal_generator_control (
 	// );
 
 	// ---------dynamic seg-------------
-	//
 	cnt_seg_dync#(
 		.stay_time ( 16'd50_000 )
 	)u_cnt_seg_dync(
 		.clk   ( clk   ),
 		.rst_n ( rst_n ),
-		.num   ( {4'b0, {1'b0, 1'b0, Wave}, 4'b0, Amplitude, {1'b0, 1'b0, Frequency[5:4]}, Frequency[3:0]} ),
+		.num   ({{6'b0, Wave}, {4'b0, Amplitude}, {2'b0, Frequency[5:0]}}),
 		.sel   ( sel   ),
 		.seg   ( seg   )
 	);

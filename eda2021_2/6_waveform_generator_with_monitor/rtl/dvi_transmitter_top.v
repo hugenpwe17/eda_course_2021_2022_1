@@ -1,3 +1,25 @@
+//****************************************Copyright (c)***********************************//
+//原子哥在线教学平台：www.yuanzige.com
+//技术支持：www.openedv.com
+//淘宝店铺：http://openedv.taobao.com 
+//关注微信公众平台微信号："正点原子"，免费获取ZYNQ & FPGA & STM32 & LINUX资料。
+//版权所有，盗版必究。
+//Copyright(C) 正点原子 2018-2028
+//All rights reserved
+//----------------------------------------------------------------------------------------
+// File name:           dvi_transmitter_top
+// Last modified Date:  2021/4/7 9:30:00
+// Last Version:        V1.1
+// Descriptions:        DVI发送端顶层模块
+//----------------------------------------------------------------------------------------
+// Created by:          正点原子
+// Created date:        2021/4/7 9:30:00
+// Version:             V1.0
+// Descriptions:        The original version
+//
+//----------------------------------------------------------------------------------------
+//****************************************************************************************//
+
 module dvi_transmitter_top(
     input        pclk,           // pixel clock
     input        pclk_x5,        // pixel clock x5

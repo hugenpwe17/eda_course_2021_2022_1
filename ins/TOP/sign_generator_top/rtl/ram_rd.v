@@ -1,8 +1,8 @@
 module ram_rd(
     input            clk,           //时钟信号
     input            rst_n,         //复位信号，低电平有效
-    input            pixel_xpos,
-    input            pixel_ypos,
+    input     [10:0]       pixel_xpos,
+    input     [10:0]       pixel_ypos,
                                     
     //RAM读端口操作                 //ram读使能
     output           ram_rd_en,     //ram读地址
