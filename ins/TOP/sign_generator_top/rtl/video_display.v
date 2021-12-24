@@ -34,7 +34,7 @@ assign edge_region = ((pixel_xpos == 140 - 1) || (pixel_xpos == 1280 - 140) || (
 // 坐标轴区域
 assign axis_region = ((pixel_xpos == 640) || (pixel_ypos == 336)) ? 1'b1 : 1'b0;
 // 网格区域
-assign grid_region = ((((( pixel_xpos / 64 ) * 64 - pixel_xpos) == 0) && (pixel_ypos[0])) || ((((pixel_ypos / 48) * 48 - pixel_ypos) == 0) && (pixel_xpos[0]))) ? 1'b1 : 1'b0;
+assign grid_region = ((((( pixel_xpos / 64 ) * 64 - pixel_xpos) == 0) && (pixel_ypos[0])) || ((((pixel_ypos / 32) * 32 - pixel_ypos) == 0) && (pixel_xpos[0]))) ? 1'b1 : 1'b0;
 
 //根据当前像素点坐标指定当前像素点颜色数据，在屏幕上显示彩条
 always @(posedge pixel_clk ) begin
@@ -46,7 +46,7 @@ always @(posedge pixel_clk ) begin
         end
         else begin
             if(display_region) begin
-                if(edge_region || axis_region) begin
+                if(edge_region) begin
                     pixel_data <= GREEN;
                 end
                 else if(grid_region) begin

@@ -27,7 +27,7 @@ always @(posedge clk) begin
 end
 
 always @(posedge clk) begin
-    if(ram_rd_data / 8 == (pixel_ypos - 48)) begin
+    if((ram_rd_data / 8) == (576 - (pixel_ypos - 48 + 4))) begin
         pixel_flag <= 1'b1;
     end
     else begin
