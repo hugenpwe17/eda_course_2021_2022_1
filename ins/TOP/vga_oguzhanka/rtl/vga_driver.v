@@ -107,7 +107,7 @@ module vga_driver(
             end else if ((cnt_v >= 469)&&(cnt_v % 2 == 1)&&(cnt_v != 479)) begin
                 vga_rgb <= RED;
             end
-            else if (cnt_h == 0) begin      // left edge
+            else if (cnt_h == 0) begin          // left edge
                 vga_rgb <= WHITE;
             end else if (cnt_h == 639) begin    // right edge
                 vga_rgb <= WHITE;

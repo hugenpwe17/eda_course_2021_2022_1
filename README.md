@@ -286,3 +286,6 @@ uart_tx	output	A8	发送端口
 gbc_key	input	D5	按键端口
 gbc_led	output	D3	led端口
 
+P6
+
+P7
