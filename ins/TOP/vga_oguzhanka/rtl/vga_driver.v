@@ -38,11 +38,11 @@ module vga_driver(
     );
 
     // clk (50MHz) to pixel_clk(25MHz of 640 * 480 @ 60Hz)
-    reg q;  // frequency division signal(temp)
+    reg p_clk;  // frequency division signal(temp)
 
 	always@(posedge clk) begin
-		q <= ~q; 
-		pixel_clk <= q;
+		p_clk <= ~p_clk; 
+		pixel_clk <= p_clk;
 	end
     
     // screen horizontal sweep
