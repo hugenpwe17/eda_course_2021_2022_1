@@ -50,8 +50,8 @@ assign video_en  = (((cnt_h >= H_SYNC+H_BACK) && (cnt_h < H_SYNC+H_BACK+H_DISP))
                  &&((cnt_v >= V_SYNC+V_BACK) && (cnt_v < V_SYNC+V_BACK+V_DISP)))
                  ?  1'b1 : 1'b0;
 
-//RGB222数据输出
-assign video_rgb = video_en ? pixel_data : 6'd0;
+//RGB888数据输出
+assign video_rgb = video_en ? pixel_data : 24'd0;
 
 //请求像素点颜色数据输入
 assign data_req = (((cnt_h >= H_SYNC+H_BACK-1'b1) && 
