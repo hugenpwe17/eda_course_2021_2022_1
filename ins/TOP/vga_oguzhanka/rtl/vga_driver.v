@@ -86,8 +86,8 @@ module vga_driver(
         &&  (cnt_v < VERTICAL_VISIBLE_AREA + VERTICAL_FRONT_PORCH + VERTICAL_SYNC_PULSE)
         ); 
 	end
- 
-	assign vga_sync_v = !p_vSync; 
+    // polarity of horizontal/vertical sync pulse is negative
+	assign vga_sync_v = !p_vSync;
 	assign vga_sync_h = !p_hSync;
 	
     // display settings
@@ -95,7 +95,9 @@ module vga_driver(
         if (dispaly_region)begin
             if (((cnt_h % 80 == 0&&(cnt_h != 0)))||((cnt_v % 80 == 0)&&(cnt_v != 0))) begin
                 vga_rgb <= GREEN;
-            end 
+            end else if (((cnt_h % 80 == 79&&(cnt_h != 639)))||((cnt_v % 80 == 79)&&(cnt_v != 479))) begin
+                vga_rgb <= BLUE;
+            end
             else if ((cnt_h <= 10)&&(cnt_h % 2 == 0)&&(cnt_h != 0)) begin
                 vga_rgb <= RED;
             end else if ((cnt_v <= 10)&&(cnt_v % 2 == 0)&&(cnt_v != 0)) begin
