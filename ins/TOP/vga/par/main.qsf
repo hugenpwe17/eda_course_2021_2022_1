@@ -18,7 +18,7 @@
 #
 # Quartus II 64-Bit
 # Version 13.1.0 Build 162 10/23/2013 SJ Full Version
-# Date created = 23:01:40  December 24, 2021
+# Date created = 14:51:03  December 25, 2021
 #
 # -------------------------------------------------------------------------- #
 #
@@ -40,11 +40,11 @@ set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE10F17C8
 set_global_assignment -name TOP_LEVEL_ENTITY main
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "23:01:40  DECEMBER 24, 2021"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:51:03  DECEMBER 25, 2021"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -53,28 +53,18 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_location_assignment PIN_M2 -to clk
 set_location_assignment PIN_M1 -to rst_n
-set_location_assignment PIN_T3 -to video_hs
-set_location_assignment PIN_P3 -to video_vs
 set_location_assignment PIN_T6 -to video_rgb[0]
 set_location_assignment PIN_R5 -to video_rgb[1]
 set_location_assignment PIN_T4 -to video_rgb[2]
 set_location_assignment PIN_R3 -to video_rgb[3]
 set_location_assignment PIN_T5 -to video_rgb[4]
 set_location_assignment PIN_R4 -to video_rgb[5]
-set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
-set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
-set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS PROGRAMMING PIN"
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR "C:/altera/13.1/eda_fpga/ins/TOP/vga_colorbar_top/par/simulation/qsim/" -section_id eda_simulation
-set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
 set_global_assignment -name VERILOG_FILE ../rtl/ip_core/pll_clk/pll_clk.v
 set_global_assignment -name VERILOG_FILE ../rtl/vga_driver.v
 set_global_assignment -name VERILOG_FILE ../rtl/vga_display.v
 set_global_assignment -name VERILOG_FILE ../rtl/main.v
-set_global_assignment -name VECTOR_WAVEFORM_FILE ../sim/Waveform.vwf
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_T3 -to video_hs
+set_location_assignment PIN_P3 -to video_vs
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

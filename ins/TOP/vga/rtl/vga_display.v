@@ -2,14 +2,14 @@ module  vga_display(
     input                pixel_clk,
     input                sys_rst_n,
     
-    input        [10:0]  pixel_xpos,  //像素点横坐标
-    input        [10:0]  pixel_ypos,  //像素点纵坐标
+    input        [9:0]  pixel_xpos,  //像素点横坐标
+    input        [9:0]  pixel_ypos,  //像素点纵坐标
     output  reg  [5:0]   pixel_data   //像素点数据
 );
 
 //parameter define
-parameter  H_DISP = 11'd1280;                       //分辨率——行
-parameter  V_DISP = 11'd720;                        //分辨率——列
+parameter  H_DISP = 10'd640;                       //分辨率——行
+parameter  V_DISP = 10'd480;                        //分辨率——列
 
 localparam WHITE  = 6'b11_11_11;  //RGB222 白色
 localparam BLACK  = 6'b00_00_00;  //RGB222 黑色
@@ -56,33 +56,22 @@ assign grid_region = ((((( pixel_xpos / 64 ) * 64 - pixel_xpos) == 0) && (pixel_
 //     end  
 // end
 
-assign test_region = (  pixel_xpos == 0 ||
-                        pixel_xpos == 2 ||
-                        pixel_xpos == 10 || 
-                        pixel_xpos == 20 ||
-                        pixel_xpos == 30 || 
-                        pixel_xpos == 40 ||
-                        pixel_xpos == 50 ||
-                        pixel_xpos == 60 ||
-                        pixel_xpos == 1280 || 
-                        pixel_xpos == 1278 || 
-                        pixel_xpos == 1276 || 
-                        pixel_xpos == 1274 || 
-                        pixel_xpos == 1272 || 
-                        pixel_xpos == 1270 ||
-                        pixel_xpos == 1260 ||
-                        pixel_xpos == 1250 ||
-                        pixel_xpos == 1240 || 
-                        pixel_ypos == 1 ||
-                        pixel_ypos == 11 || 
-                        pixel_ypos == 21 ||
-                        pixel_ypos == 700||
-                        pixel_ypos == 710||
-                        pixel_ypos == 720);
+// assign test_region = (
+//                         (pixel_xpos == 0) ||    // left edge
+//                         (pixel_ypos == 0) ||    // top edge
+//                         (pixel_xpos == 639) ||  // right edge
+//                         (pixel_ypos == 479)     // bottom edge 
+//                         );
+
+assign  test_region = ((pixel_xpos % 80 == 0) || (pixel_ypos % 80 ==0));
+
+assign  test_region2 = ((pixel_xpos % 80 == 79) || (pixel_ypos % 80 == 79));
 
 always @(posedge pixel_clk ) begin
     if(test_region) begin
         pixel_data <= BLUE;
+    end else if(test_region2) begin
+        pixel_data <= RED;
     end else begin
         pixel_data <= BLACK;
     end
