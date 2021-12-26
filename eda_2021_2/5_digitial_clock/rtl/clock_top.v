@@ -30,9 +30,9 @@ module clock_top (
     output wire [7:0]   hr_cal,         // hours bit in time calibration
     output wire [7:0]   mn_cal,         // minutes bit in time calibration    
     output wire [7:0]   sd_cal,         // seconds bit in time calibration
-    output wire [7:0]   hr,             // hours bit in segment display
-    output wire [7:0]   mn,             // minutes bit in segment display 
-    output wire [7:0]   sd,             // seconds bit in segment display
+    output wire [7:0]   hr,             // hours bit in timing
+    output wire [7:0]   mn,             // minutes bit in timing
+    output wire [7:0]   sd,             // seconds bit in timing
     output wire [7:0]   hr_alarm,       // hours bit in alarm setting
     output wire [7:0]   mn_alarm,       // minutes bit in alarm setting 
     output wire [7:0]   sd_alarm,       // seconds bit in alarm setting

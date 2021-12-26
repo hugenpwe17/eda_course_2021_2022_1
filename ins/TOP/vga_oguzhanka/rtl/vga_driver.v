@@ -119,6 +119,17 @@ module vga_driver(
             else begin
                 vga_rgb <= BLACK;   
             end
+            // if ((cnt_h >= 128 * 0) && (cnt_h < 128 * 1)) begin
+            //     vga_rgb <= BLACK;
+            // end else if ((cnt_h >= 128 * 1) && (cnt_h < 128 * 2)) begin
+            //     vga_rgb <= WHITE;
+            // end else if ((cnt_h >= 128 * 2) && (cnt_h < 128 * 3)) begin
+            //     vga_rgb <= RED;
+            // end else if ((cnt_h >= 128 * 3) && (cnt_h < 128 * 4)) begin
+            //     vga_rgb <= GREEN;
+            // end else if ((cnt_h >= 128 * 4) && (cnt_h < 128 * 5)) begin
+            //     vga_rgb <= BLUE;
+            // end
         end else begin
             vga_rgb <= BLACK;
         end

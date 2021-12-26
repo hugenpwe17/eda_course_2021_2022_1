@@ -1,10 +1,9 @@
-// 8_SEG_HEX_LED(common anode)
-
+// 8_SEG_HEX_LED
 module cnt_seg_static(
-	input wire [3:0] cnt4,	// 4-bit binary code input
-	output reg [7:0] seg	// 1-bit hex static segment code output
+	input wire [3:0] cnt4,
+	output reg [7:0] seg
 );
-	initial seg = 8'b1111_1111;	// default => Blanking
+	initial seg = 8'b1111_1111;
 	
 	always @(cnt4) begin
 		case (cnt4)

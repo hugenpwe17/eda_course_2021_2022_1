@@ -1,10 +1,12 @@
-module full_adder (
-    input   a_in,           // summend bit
-    input   b_in,           // addend bit
-    input   c_in,           // carry_in bit
+// 1-bit full adder
 
-    output  sum_out,        // sum bit
-    output  carry_out       // carry bit
+module full_adder (
+    input   a_in,           // augend
+    input   b_in,           // addend
+    input   c_in,           // carry input
+
+    output  sum_out,        // sum
+    output  carry_out       // carry output
 );
 
     wire            wire_sum;           // wire_sum = a_in + b_in

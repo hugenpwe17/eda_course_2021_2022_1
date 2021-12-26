@@ -1,5 +1,3 @@
-// 8_SEG_HEX_LED(common anode, dynamic)
-
 module cnt_seg_dync #(
     // stat time = stay_time * 20ns
     parameter stay_time = 16'd50_000
@@ -106,9 +104,13 @@ module cnt_seg_dync #(
                 4'H4: seg = 8'b1001_1001; 4'H5: seg = 8'b1001_0010;
                 4'H6: seg = 8'b1000_0010; 4'H7: seg = 8'b1111_1000;
                 4'H8: seg = 8'b1000_0000; 4'H9: seg = 8'b1001_0000;
+                4'HA: seg = 8'b1000_1000; 4'HB: seg = 8'b1000_0011;
+			    4'HC: seg = 8'b1100_0110; 4'HD: seg = 8'b1010_0001;
+			    4'HE: seg = 8'b1000_0110; 4'HF: seg = 8'b1000_1110;
                 default: seg = 8'b1111_1111;
             endcase
         end   
     end
+
 
 endmodule

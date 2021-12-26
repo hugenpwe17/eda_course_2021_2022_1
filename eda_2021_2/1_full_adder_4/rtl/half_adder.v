@@ -1,9 +1,11 @@
-module half_adder (
-    input   a_in,           // summand bit
-    input   b_in,           // addend bit
+// 1-bit half adder
 
-    output  sum_out,        // sum bit
-    output  carry_out       // carry bit
+module half_adder (
+    input   a_in,           // augend
+    input   b_in,           // addend
+
+    output  sum_out,        // sum
+    output  carry_out       // carry output
 );
     
     assign sum_out      =   a_in ^ b_in;    // ^ := XOR

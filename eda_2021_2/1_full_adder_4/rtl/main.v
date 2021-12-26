@@ -1,10 +1,11 @@
+// main module
 module main (
-    input   [3:0]   a_in,
-    input   [3:0]   b_in,
-    input           c_in,
+    input   [3:0]   a_in,   // augend
+    input   [3:0]   b_in,   // addend
+    input           c_in,   // carry input
 
-    output  [3:0]   sum_out,
-    output          carry_out
+    output  [3:0]   sum_out,    // sum
+    output          carry_out   // carry output
 );
     
     full_adder_4 u_full_adder_4(

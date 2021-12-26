@@ -1,33 +1,33 @@
 // module-alterable counter, which can be switched to 50 or 120
 module cnt_mod_alt2 #(
-    // Parameter
-    parameter FREQ_DIV_COEFF_WIDTH = 28,        // frequency division coefficient's bit width
-    parameter FREQ_DIV_COEFF = 28'd49_999_999,  // cnt_div : 1s
+    // PARAMETER DEFINE
+    parameter FREQ_DIV_COEFF_WIDTH  = 28,                   // frequency division coefficient's bit width
+    parameter FREQ_DIV_COEFF        = 28'd49_999_999,       // cnt_div : 1s
 
-    parameter MODEL_WIDTH = 12,                 // model's bit width 
-	parameter MODEL_1 = 12'b0000_0010_0011,     // model = 24
-	parameter MODEL_2 = 12'b0001_0100_1001      // model = 150
+    parameter MODEL_WIDTH           = 12,                   // model's bit width 
+	parameter MODEL_1               = 12'b0000_0010_0011,   // model = 24
+	parameter MODEL_2               = 12'b0001_0100_1001    // model = 150
     )(
-    input sys_clk,          // system clock, default frequency = 50MHz
-    input sys_rst_n,        // reset signal, 1 => none, 0 => set counter to 0
+    input               sys_clk,          // system clock, default frequency = 50MHz
+    input               sys_rst_n,        // reset signal, 1 => none, 0 => set counter to 0
 
-    input cnt_en,           // enable signal, 1 => start and keep counter, 0 => stop counter
+    input               cnt_en,           // enable signal, 1 => start and keep counter, 0 => stop counter
     
-    input cnt_mod_switch,   // switch signal, 0 => model_1, 1=> model_2
+    input               cnt_mod_switch,   // switch signal, 0 => model_1, 1=> model_2
     
-    output [3:0] single_digits,       // single digits detector signal
-    output [3:0] ten_digits,          // ten digits detector signal
-    output [3:0] hundred_digits,      // hundred digits detector signal
+    output [3:0]        single_digits,    // single digits detector signal
+    output [3:0]        en_digits,        // ten digits detector signal
+    output [3:0]        hundred_digits,   // hundred digits detector signal
 
-    output reg          cnt_clk,    // the clock of counter
-    output reg [11:0]   num_bin,    // The value of the counter (binary)
-    output reg [6:0]    SG0,        // nixie tube signal (sigle digits)
-    output reg [6:0]    SG1,        // nixie tube signal (ten digits)
-    output reg [6:0]    SG2         // nixie tube signal (hundred digits)
+    output reg          cnt_clk,          // the clock of counter
+    output reg [11:0]   num_bin,          // The value of the counter (binary)
+    output reg [6:0]    SG0,              // nixie tube signal (sigle digits)
+    output reg [6:0]    SG1,              // nixie tube signal (ten digits)
+    output reg [6:0]    SG2               // nixie tube signal (hundred digits)
 );  
     // register	
-	reg [FREQ_DIV_COEFF_WIDTH-1:0] freq_div_cnt;    // counter for frequence diveder
-    reg [11:0] model;                               // module register
+	reg [FREQ_DIV_COEFF_WIDTH-1:0]  freq_div_cnt;    // counter for frequence diveder
+    reg [11:0]                      model;           // module register
     
 	// 50MHZ system clock to 1HZ clock
 	always@(posedge sys_clk)begin 

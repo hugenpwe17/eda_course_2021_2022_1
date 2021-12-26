@@ -20,5 +20,4 @@ module cnt_seg_static(
 		endcase
 	end
 	
-	
 endmodule

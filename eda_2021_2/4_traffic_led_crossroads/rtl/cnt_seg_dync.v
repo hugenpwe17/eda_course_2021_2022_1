@@ -1,5 +1,3 @@
-// 8_SEG_HEX_LED(common anode, dynamic)
-
 module cnt_seg_dync #(
     // stat time = stay_time * 20ns
     parameter stay_time = 16'd50_000
@@ -12,7 +10,6 @@ module cnt_seg_dync #(
     output reg [5:0] sel,
     output reg [7:0] seg
 );
-
     // register
     reg [15:0] cnt;
     reg flag_stay;
@@ -110,5 +107,6 @@ module cnt_seg_dync #(
             endcase
         end   
     end
+
 
 endmodule
