@@ -1,4 +1,4 @@
-module main (
+module main_dds (
     input 					clk,		// clock, default is 50MHz
     input 					rst_n,		// reset signal
 
