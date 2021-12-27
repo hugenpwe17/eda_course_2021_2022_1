@@ -134,7 +134,7 @@ module vga_driver(
             
             else if (waveform_region) begin
                 if (waveform_edge_region) begin
-                    vga_rgb <= WHITE;
+                    vga_rgb <= GREEN;
                 end else if (vga_wave) begin
                     vga_rgb <= RED;
                 end else if (waveform_grid_region) begin
