@@ -35,17 +35,29 @@ module signal_generator_control (
 	reg [5:0] Frequency = 6'd1; // Frequency switch signal(1-50x Frequency per switch)
 
 	reg [8:0] Address = 9'd0; // Address of wave data
+
+	reg [27:0] cnt_move;	// counter for waveform moving (per 1ms)
+	reg flag_move;			// flag signal for waveform moving(per 1ms)
+	
+	// output flag for waveform moving(per 1ms) 
+	always @(posedge clk, negedge rst_n) begin
+		if(!rst_n) begin
+			cnt_move <= 1'b0;
+			flag_move <= 1'b0;
+		end else begin
+			if(cnt_move == 28'd500_000) begin
+				cnt_move <= 1'b0;
+				flag_move <= 1'b1;
+			end else begin
+				cnt_move <= cnt_move + 1'b1;
+				flag_move <= 1'b0;
+			end
+		end
+	end
 	
 	wire [7:0] wave_Sin;	
 	wire [7:0] wave_Sawtooth;	
 	wire [7:0] wave_Square;	
-
-	initial begin
-		Wave		<= 0;
-		Amplitude	<= 1;
-		Phase		<= 0;
-		Frequency	<= 1;
-	end
 
 	// Wave switch signal edge detecting
 	always @(posedge clk) begin
@@ -133,12 +145,14 @@ module signal_generator_control (
 					Phase <= 9'd0;
 				end
 				else begin
-					Phase <= Phase + 64;
+					Phase <= Phase + 9'd64;
 					Address <= Phase;
 				end
+			end else if(flag_move) begin
+				Phase <= Phase + 1'b1;
 			end
 			else begin
-				Phase <= Phase;
+				Phase <= Phase + 1'b1;
 				Address <= Address + Frequency;
 			end
 		end

@@ -85,7 +85,7 @@ module main (
     wire        pixel_clk;
     wire [9:0]  cnt_h;
     wire [9:0]  cnt_v;
-    wire 	[5:0]  vga_background;
+    wire [5:0]  vga_background;
 
     vga_driver u_vga_driver(
         .clk        ( clk        ),
