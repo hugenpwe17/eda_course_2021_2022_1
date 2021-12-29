@@ -8,11 +8,11 @@ module main (
 	input 				F_ctrl,		// Frequency controls
 
     output  wire [5:0] 	sel,		// bit select signal
-    output  wire [7:0] 	seg,			// segment select signal
+    output  wire [7:0] 	seg,	    // segment select signal
     
     output  wire        vga_sync_h, // vga horizontal sync signal        
     output  wire        vga_sync_v, // vga vertical sync signal
-    output  wire  [5:0]  vga_rgb,    // vga color data {2'd{red}, 2'd{green}, 2'd{blue}}
+    output  wire [5:0]  vga_rgb,    // vga color data {2'd{red}, 2'd{green}, 2'd{blue}}
 
     output  wire        fengmingqi  // buzzer(beep) signal
 );

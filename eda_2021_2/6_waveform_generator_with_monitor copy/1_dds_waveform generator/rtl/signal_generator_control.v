@@ -45,7 +45,7 @@ module signal_generator_control (
 			cnt_move <= 1'b0;
 			flag_move <= 1'b0;
 		end else begin
-			if(cnt_move == 28'd500_000) begin
+			if(cnt_move == 28'd1_000_000) begin
 				cnt_move <= 1'b0;
 				flag_move <= 1'b1;
 			end else begin
@@ -148,11 +148,12 @@ module signal_generator_control (
 					Phase <= Phase + 9'd64;
 					Address <= Phase;
 				end
-			end else if(flag_move) begin
-				Phase <= Phase + 1'b1;
+			end 
+			else if(flag_move) begin
+				// 我不知道为什么但它就是管用
 			end
 			else begin
-				Phase <= Phase + 1'b1;
+				Phase <= Phase;
 				Address <= Address + Frequency;
 			end
 		end
