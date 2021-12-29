@@ -150,7 +150,8 @@ module signal_generator_control (
 				end
 			end 
 			else if(flag_move) begin
-				// 我不知道为什么但它就是管用
+				// i don't know why but it just works
+				// i think it was given a misalignment when writing memory
 			end
 			else begin
 				Phase <= Phase;
@@ -158,7 +159,6 @@ module signal_generator_control (
 			end
 		end
 	end
-
 	// Output Wave
 	always @(posedge clk) begin
 		case (Wave)
