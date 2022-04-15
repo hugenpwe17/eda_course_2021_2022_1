@@ -131,15 +131,11 @@ HEX5[6] ,		PIN_AA25
 //PIN ASSIGNMENTS OF New origin BOARD
 //2021-12-12 BY OYXL
 To,		Location
-
 信号名	方向	管脚	端口说明
-
 系统时钟（50Mhz）			
 sys_clk	input	M2	系统时钟，频率：50Mhz 
-
 系统复位（RESET）			
 sys_rst_n	input	M1	系统复位，低电平有效 
-
 4个按键			
 key[0]	input	E16	按键KEY0
 key[1]	input	E15	按键KEY1
