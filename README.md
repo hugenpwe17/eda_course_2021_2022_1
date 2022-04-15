@@ -12,7 +12,7 @@ par: quartus ii生成的工程(project)文件
 rtl: 存放verilog代码文件  
 sim: 存放仿真代码(testbench)文件和仿真结果  
 # 文件夹说明
-.
+.  
 ├── eda_2021_2022_1	// 2021-2022-1学期EDA课程设计  
 │   ├── 1_full_adder_4	// 4位全加器  
 │   ├── 2_counter_mod_2	// 双模计数器  
