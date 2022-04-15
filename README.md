@@ -16,14 +16,22 @@ rtl: 存放verilog代码文件
 sim: 存放仿真代码(testbench)文件和仿真结果  
 
 # 文件夹说明
-    ins         实例文件   
-      
-    ADDER       加法器  
-    COMP        基本元件  
-    COUNTER     计数器  
-    LED         LED灯的应用  
-    MULTIPLIER  乘法器  
-    TOP         综合项目  
+.
+├── eda_2021_2022_1	// 2021-2022-1学期EDA课程设计
+│   ├── 1_full_adder_4	// 4位全加器
+│   ├── 2_counter_mod_2	// 双模计数器
+│   ├── 3_sequence_generator_with_detector	// 序列发生器&序列检测器
+│   ├── 4_traffic_led_crossroads	// 十字路口交通灯发生器
+│   ├── 5_digitial_clock	// 数字时钟
+│   └── 6_waveform_generator_with_monitor	// 波形发生器&显示驱动
+└── ins	// 实例文件
+    ├── ADDER	// 加法器
+	├── COMP	// 常用部件
+	├── COUNTER	// 计数器
+	├── LED		// LED灯
+	├── MULTIPLIER	// 乘法器
+	├── TEST	// 测试
+	└── TOP		// 综合项目顶层
 
 # 管脚分配
 
@@ -118,17 +126,20 @@ HEX5[4] ,		PIN_AB26
 HEX5[5] ,		PIN_AA26 
 HEX5[6] ,		PIN_AA25
 
-## New origin
+## 新起点(new origin)开发板
 
 //PIN ASSIGNMENTS OF New origin BOARD
 //2021-12-12 BY OYXL
 To,		Location
 
 信号名	方向	管脚	端口说明
+
 系统时钟（50Mhz）			
-sys_clk	input	M2	系统时钟，频率：50Mhz
+sys_clk	input	M2	系统时钟，频率：50Mhz 
+
 系统复位（RESET）			
-sys_rst_n	input	M1	系统复位，低电平有效
+sys_rst_n	input	M1	系统复位，低电平有效 
+
 4个按键			
 key[0]	input	E16	按键KEY0
 key[1]	input	E15	按键KEY1
